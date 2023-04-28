@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['add-post'] = "Choose post thumbnail";
     } else {
         // WORK ON THUMBNAIL
-        // rename image
+        // rename the image
         $time = time(); // make each image name unique
         $thumbnail_name = $time . $thumbnail['name'];
         $thumbnail_tmp_name = $thumbnail['tmp_name'];
@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
         $extension = end($extension);
         if (in_array($extension, $allowed_file)) {
             // make sure image is not too big (2mb+)
-            if ($thumbnail['size'] < 2_000_000) {
+            if ($thumbnail['size'] < 2000000) {
                 // upload thumbnail
                 move_uploaded_file($thumbnail_tmp_name, $thumbnail_destination_path);
             } else {
@@ -59,8 +59,7 @@ if (isset($_POST['submit'])) {
         }
 
         // insert post into database
-        $query = "INSERT INTO posts (title, body, thumbnail, category_id, author_id, is_featured)
-                VALUES ('$title', '$body', '$thumbnail', $category_id, $author_id, $is_featured)";
+        $query = "INSERT INTO posts (title, body, thumbnail, category_id, author_id, is_featured) VALUES ('$title', '$body', '$thumbnail_name', $category_id, $author_id, $is_featured)";
         $result = mysqli_query($connection, $query);
 
         if (!mysqli_errno($connection)) {

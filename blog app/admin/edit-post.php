@@ -22,15 +22,17 @@ if (isset($_GET['id'])) {
             <div class="container form__section-container">
                 <h2>Edit Post</h2>
                 <form action="<?=ROOT_URL?>admin/edit-post-logic.php" enctype="multipart/form-data" method="POST">
-                    <input type="text" value="<?=$post['title']?>" placeholder="Title" />
-                    <select>
+                    <input type="hidden" name="id" value="<?=$post['id']?>" />
+                    <input type="hidden" name="previous_thumbnail_name" value="<?=$post['thumbnail']?>" />
+                    <input type="text" name="title" value="<?=$post['title']?>" placeholder="Title" />
+                    <select name="category">
                         <?php while ($category = mysqli_fetch_assoc($categories)): ?>
                         <option value="<?=$category['id']?>"><?=$category['title']?></option>
                         <?php endwhile?>
                     </select>
-                    <textarea rows="10" placeholder="Body" class="textarea__add-category"><?=$post['body']?></textarea>
+                    <textarea rows="10" name="body" placeholder="Body" class="textarea__add-category"><?=$post['body']?></textarea>
                     <div class="form__control inline">
-                        <input type="checkbox" id="is_featured" value="1" checked />
+                        <input type="checkbox" name="is_featured" id="is_featured" value="1" checked />
                         <label for="is_featured">Featured</label>
                     </div>
 

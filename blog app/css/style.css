@@ -63,6 +63,11 @@ section {
     width: 100vw;
 }
 
+/* Add to posts margin if theres no featured post or search input */
+.section__extra-margin {
+    margin-top: 7rem;
+}
+
 h1,
 h2,
 h3,
@@ -494,6 +499,11 @@ GENERAL FORM
 .alert__message.success {
     background-color: var(--color-green-light);
     color: var(--color-green);
+}
+
+/* Center text on alert */
+.alert__message.lg {
+    text-align: center;
 }
 
 form {
