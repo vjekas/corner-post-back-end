@@ -1,25 +1,22 @@
 <!---------------------- FOOTER ---------------------->
 <footer>
             <div class="footer__socials">
-                <a href="https://github.com/vjekas" target="_blank"
-                    ><i class="uil uil-github"></i
-                ></a>
+                <a href="https://github.com/vjekas" target="_blank"><i class="uil uil-github"></i></a>
                 <a href="https://youtube.com" target="_blank"><i class="uil uil-youtube"></i></a>
-                <a href="https://instagram.com/vjekas.dev" target="_blank"
-                    ><i class="uil uil-instagram"></i
-                ></a>
+                <a href="https://instagram.com/vjekas.dev" target="_blank"><i class="uil uil-instagram"></i></a>
             </div>
 
             <div class="container footer__container">
                 <article>
                     <h4>Categories</h4>
+<?php
+$all_categories_query = "SELECT * FROM categories";
+$all_categories = mysqli_query($connection, $all_categories_query);
+?>
                     <ul>
-                        <li><a href="">Wild Life</a></li>
-                        <li><a href="">Food</a></li>
-                        <li><a href="">Nature</a></li>
-                        <li><a href="">Travel</a></li>
-                        <li><a href="">Science</a></li>
-                        <li><a href="">Technology</a></li>
+                    <?php while ($category = mysqli_fetch_assoc($all_categories)): ?>
+                        <li><a href="<?=ROOT_URL?>category-post.php?id=<?=$category['id']?>"><?=$category['title']?></a></li>
+                    <?php endwhile?>
                     </ul>
                 </article>
 
@@ -48,11 +45,11 @@
                 <article>
                     <h4>Permalinks</h4>
                     <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="">Blog</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Services</a></li>
-                        <li><a href="">Contact</a></li>
+                        <li><a href="<?=ROOT_URL?>">Home</a></li>
+                        <li><a href="<?=ROOT_URL?>blog.php">Blog</a></li>
+                        <li><a href="<?=ROOT_URL?>about.php">About</a></li>
+                        <li><a href="<?=ROOT_URL?>services.php">Services</a></li>
+                        <li><a href="<?=ROOT_URL?>contact.php">Contact</a></li>
                     </ul>
                 </article>
             </div>
